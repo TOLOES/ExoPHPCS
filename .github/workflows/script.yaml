@@ -1,0 +1,16 @@
+name: Creation du script
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  hello_world_job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Afficher "Hello World"
+        run: echo "Hello World"
+
+        [![Mon premier script](https://github.com/<TOLOES>/<ExoPHPCS>/actions/workflows/script.yml/badge.svg)](https://github.com/<TOLOES>/<ExoPHPCS>/actions/script.yml)
+
