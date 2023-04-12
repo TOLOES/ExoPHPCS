@@ -24,4 +24,4 @@ jobs:
         run: composer install --prefer-dist --no-progress
 
       - name: Run PHP_CodeSniffer
-        run: php "C:\Users\tomde\PHP_CodeSniffer\bin\phpcs" --standard=PSR1,PSR2 "C:\Users\tomde\OneDrive\Documents\One drive\OneDrive\Cours_de_L2\Qualité de code\TD06\ExoPHPCS\exo.php"
+        run: php phpcs/bin/phpcs --standard=PSR1,PSR2 "C:\Users\tomde\OneDrive\Documents\One drive\OneDrive\Cours_de_L2\Qualité de code\TD06\ExoPHPCS\exo.php"
