@@ -1,4 +1,4 @@
-name: Creation du script
+name: PHP_CodeSniffer
 
 on:
   push:
@@ -6,11 +6,22 @@ on:
       - main
 
 jobs:
-  hello_world_job:
+  phpcs:
+    name: Run PHP_CodeSniffer
     runs-on: ubuntu-latest
     steps:
-      - name: Afficher "Hello World"
-        run: echo "Hello World"
+      - name: Checkout repository
+        uses: actions/checkout@v2
 
-        [![Mon premier script](https://github.com/<TOLOES>/<ExoPHPCS>/actions/workflows/script.yml/badge.svg)](https://github.com/<TOLOES>/<ExoPHPCS>/actions/script.yml)
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: "7.4"
+          extensions: mbstring, intl, json, redis
+          coverage: none
 
+      - name: Install dependencies
+        run: composer install --prefer-dist --no-progress
+
+      - name: Run PHP_CodeSniffer
+        run: bin/phpcs
