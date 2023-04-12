@@ -20,8 +20,11 @@ jobs:
           extensions: mbstring, intl, json, redis
           coverage: none
 
-      - name: Install dependencies
-        run: composer install --prefer-dist --no-progress
+      - name: Install PHP_CodeSniffer
+        run: |
+          curl -OL https://squizlabs.github.io/PHP_CodeSniffer/phpcs.phar
+          chmod +x phpcs.phar
+          sudo mv phpcs.phar /usr/local/bin/phpcs
 
       - name: Run PHP_CodeSniffer
-        run: php phpcs/bin/phpcs --standard=PSR1,PSR2 "C:\Users\tomde\OneDrive\Documents\One drive\OneDrive\Cours_de_L2\Qualité de code\TD06\ExoPHPCS\exo.php"
+        run: phpcs --standard=PSR1,PSR2 "exo.php"
